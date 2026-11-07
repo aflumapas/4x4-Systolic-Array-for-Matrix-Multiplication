@@ -1,0 +1,36 @@
+`timescale 1ns / 1ps
+module PE(
+// Assign Inputs and Outputs for the PE Module
+    input clock_signal,
+    input reset_signal,
+    input [7:0] inputA,
+    input [7:0] inputB,
+    output reg [7:0] outputA,
+    output reg [7:0] outputB,
+    output reg [31:0] accum_total
+    );
+   
+   // Start by creating a looping feature such that when the clock signal or the reset signal is trasitioning from low to high it would cycle
+   always @(posedge clock_signal or posedge reset_signal) 
+   begin
+   //If the reset signal is active set all outputs to 0 for anti-corruption purposes
+        if (reset_signal) 
+        begin 
+            outputA <= 8'b0;
+            outputB <= 8'b0;
+            accum_total <= 32'b0;
+        end 
+        
+   // Else if the reset signal is not active set respective imputs equal to their outputs
+        else 
+        begin
+            // Pass inputs along to the next PEs in the grid
+            outputA <= inputA;
+            outputB <= inputB;
+            
+            // Multiply and Accumulate using signed arithmetic for the purpose of keeping the product at a solid 32 bits and no overflow
+            accum_total <= accum_total + ($signed(inputA) * $signed(inputB));
+        end
+    end
+   
+endmodule
