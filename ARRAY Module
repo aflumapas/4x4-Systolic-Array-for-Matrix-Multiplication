@@ -1,0 +1,248 @@
+`timescale 1ns / 1ps
+module array
+(
+    input clock_signal,
+    input reset_signal,
+    input [7:0] input_row0,
+    input [7:0] input_row1,
+    input [7:0] input_row2,
+    input [7:0] input_row3,
+    input [7:0] input_column0,
+    input [7:0] input_column1,
+    input [7:0] input_column2,
+    input [7:0] input_column3,
+    output [31:0] output_accum0,
+    output [31:0] output_accum1,
+    output [31:0] output_accum2,
+    output [31:0] output_accum3,
+    output [31:0] output_accum4,
+    output [31:0] output_accum5,
+    output [31:0] output_accum6,
+    output [31:0] output_accum7,
+    output [31:0] output_accum8,
+    output [31:0] output_accum9,
+    output [31:0] output_accum10,
+    output [31:0] output_accum11,
+    output [31:0] output_accum12,
+    output [31:0] output_accum13,
+    output [31:0] output_accum14,
+    output [31:0] output_accum15
+);
+
+    // ==================== ROW 0 ====================
+    wire [7:0] row_0_1;
+    wire [7:0] row_0_2;
+    wire [7:0] row_0_3;
+    wire [7:0] row_0_4;
+    wire [7:0] column_0_1;
+    wire [7:0] column_1_1;
+    wire [7:0] column_2_1;
+    wire [7:0] column_3_1;
+
+    PE PE_1 
+    (
+        .clock_signal(clock_signal), 
+        .reset_signal(reset_signal),
+        .inputA(input_row0),         
+        .inputB(input_column0),       
+        .outputA(row_0_1),           
+        .outputB(column_0_1),         
+        .accum_total(output_accum0)   
+    );
+    
+    PE PE_2 
+    (
+        .clock_signal(clock_signal), 
+        .reset_signal(reset_signal),
+        .inputA(row_0_1),            
+        .inputB(input_column1),       
+        .outputA(row_0_2),           
+        .outputB(column_1_1),         
+        .accum_total(output_accum1)   
+    );
+    
+    PE PE_3 
+    (
+        .clock_signal(clock_signal), 
+        .reset_signal(reset_signal),
+        .inputA(row_0_2),            
+        .inputB(input_column2),       
+        .outputA(row_0_3),           
+        .outputB(column_2_1),         
+        .accum_total(output_accum2)   
+    );
+    
+    PE PE_4 
+    (
+        .clock_signal(clock_signal), 
+        .reset_signal(reset_signal),
+        .inputA(row_0_3),            
+        .inputB(input_column3),       
+        .outputA(row_0_4),           
+        .outputB(column_3_1),         
+        .accum_total(output_accum3)   
+    );
+    
+    // ==================== ROW 1 ====================
+    wire [7:0] row_1_1;
+    wire [7:0] row_1_2;
+    wire [7:0] row_1_3;
+    wire [7:0] row_1_4;
+    wire [7:0] column_0_2;
+    wire [7:0] column_1_2;
+    wire [7:0] column_2_2;
+    wire [7:0] column_3_2;
+
+    PE PE_5 
+    (
+        .clock_signal(clock_signal), 
+        .reset_signal(reset_signal),
+        .inputA(input_row1),         
+        .inputB(column_0_1),       
+        .outputA(row_1_1),           
+        .outputB(column_0_2),         
+        .accum_total(output_accum4)   
+    );
+    
+    PE PE_6 
+    (
+        .clock_signal(clock_signal), 
+        .reset_signal(reset_signal),
+        .inputA(row_1_1),            
+        .inputB(column_1_1),       
+        .outputA(row_1_2),           
+        .outputB(column_1_2),         
+        .accum_total(output_accum5)   
+    );
+    
+    PE PE_7 
+    (
+        .clock_signal(clock_signal), 
+        .reset_signal(reset_signal),
+        .inputA(row_1_2),            
+        .inputB(column_2_1),       
+        .outputA(row_1_3),           
+        .outputB(column_2_2),         
+        .accum_total(output_accum6)   
+    );
+    
+    PE PE_8 
+    (
+        .clock_signal(clock_signal), 
+        .reset_signal(reset_signal),
+        .inputA(row_1_3),            
+        .inputB(column_3_1),       
+        .outputA(row_1_4),           
+        .outputB(column_3_2),         
+        .accum_total(output_accum7)   
+    );
+    
+    // ==================== ROW 2 ====================
+    wire [7:0] row_2_1;
+    wire [7:0] row_2_2;
+    wire [7:0] row_2_3;
+    wire [7:0] row_2_4;
+    wire [7:0] column_0_3;
+    wire [7:0] column_1_3;
+    wire [7:0] column_2_3;
+    wire [7:0] column_3_3;
+
+    PE PE_9 
+    (
+        .clock_signal(clock_signal), 
+        .reset_signal(reset_signal),
+        .inputA(input_row2),         
+        .inputB(column_0_2),       
+        .outputA(row_2_1),           
+        .outputB(column_0_3),         
+        .accum_total(output_accum8)   
+    );
+    
+    PE PE_10 
+    (
+        .clock_signal(clock_signal), 
+        .reset_signal(reset_signal),
+        .inputA(row_2_1),            
+        .inputB(column_1_2),       
+        .outputA(row_2_2),           
+        .outputB(column_1_3),         
+        .accum_total(output_accum9)   
+    );
+    
+    PE PE_11 
+    (
+        .clock_signal(clock_signal), 
+        .reset_signal(reset_signal),
+        .inputA(row_2_2),            
+        .inputB(column_2_2),       
+        .outputA(row_2_3),           
+        .outputB(column_2_3),         
+        .accum_total(output_accum10) 
+    );
+    
+    PE PE_12 
+    (
+        .clock_signal(clock_signal), 
+        .reset_signal(reset_signal),
+        .inputA(row_2_3),            
+        .inputB(column_3_2),       
+        .outputA(row_2_4),           
+        .outputB(column_3_3),         
+        .accum_total(output_accum11) 
+    );
+    
+    // ==================== ROW 3 ====================
+    wire [7:0] row_3_1;
+    wire [7:0] row_3_2;
+    wire [7:0] row_3_3;
+    wire [7:0] row_3_4;
+    wire [7:0] column_0_4;
+    wire [7:0] column_1_4;
+    wire [7:0] column_2_4;
+    wire [7:0] column_3_4;
+
+    PE PE_13 
+    (
+        .clock_signal(clock_signal), 
+        .reset_signal(reset_signal),
+        .inputA(input_row3),         
+        .inputB(column_0_3),       
+        .outputA(row_3_1),           
+        .outputB(column_0_4),         
+        .accum_total(output_accum12) 
+    );
+    
+    PE PE_14 
+    (
+        .clock_signal(clock_signal), 
+        .reset_signal(reset_signal),
+        .inputA(row_3_1),            
+        .inputB(column_1_3),       
+        .outputA(row_3_2),           
+        .outputB(column_1_4),         
+        .accum_total(output_accum13) 
+    );
+    
+    PE PE_15 
+    (
+        .clock_signal(clock_signal), 
+        .reset_signal(reset_signal),
+        .inputA(row_3_2),            
+        .inputB(column_2_3),       
+        .outputA(row_3_3),           
+        .outputB(column_2_4),         
+        .accum_total(output_accum14) 
+    );
+    
+    PE PE_16 
+    (
+        .clock_signal(clock_signal), 
+        .reset_signal(reset_signal),
+        .inputA(row_3_3),            
+        .inputB(column_3_3),       
+        .outputA(row_3_4),           
+        .outputB(column_3_4),         
+        .accum_total(output_accum15) 
+    );
+
+endmodule
